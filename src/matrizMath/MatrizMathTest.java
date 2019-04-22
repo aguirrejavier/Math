@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import vectorMath.VectorMath;
+
 public class MatrizMathTest {
 
 	@Test
@@ -47,6 +49,20 @@ public class MatrizMathTest {
 		mat2.setMat(aux2);
 		esperado.setMat(producto);
 		assertEquals(esperado, mat.multiplicar(mat2));
+	}
+	
+	@Test
+	public void multiplicarMatrizConVector() {
+		MatrizMath mat = new MatrizMath(3,3);
+		VectorMath vec = new VectorMath(3);
+		MatrizMath esperado = new MatrizMath(3,1);
+		Double aux1[][] = {{1.0,2.0,3.0},{1.0,1.0,1.0},{0.0,1.0,-1.0}};
+		Double aux2[] = {1.0,2.0,1.0};
+		Double producto[][] = {{8.0},{4.0},{1.0}};
+		mat.setMat(aux1);
+		vec.setCoord(aux2);
+		esperado.setMat(producto);
+		assertEquals(esperado, mat.multiplicar(vec));
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import excepciones.DistDimException;
 import excepciones.InvalidDimException;
+import vectorMath.VectorMath;
 
 public class MatrizMath {
 		
@@ -131,8 +132,19 @@ public class MatrizMath {
 					}
 				}
 			}
-			
-			
+			return producto;
+		}
+		
+		public MatrizMath multiplicar(VectorMath vec) {
+			if(columnas!=vec.getDim())
+				throw new DistDimException("Se debe cumplir DimMatriz: AxB DimVector: B");
+			MatrizMath producto = new MatrizMath(vec.getDim(),1);
+			for(int i=0; i<filas; i++) {
+				producto.mat[i][0]=0.0;
+				for(int j=0; j<columnas; j++) {
+					producto.mat[i][0] += this.mat[i][j] * vec.getCoord()[j];
+				}
+			}
 			return producto;
 		}
 		
