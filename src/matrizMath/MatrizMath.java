@@ -24,10 +24,6 @@ public class MatrizMath {
 			this.mat=new Double[filas][columnas];
 			
 		}
-		public static void main(String[] args) {
-			MatrizMath mat = new MatrizMath(2, 3);
-			System.out.println(mat.mat[0][0]);
-		}
 		
 		
 		//GETTERS Y SETTERS
@@ -152,7 +148,22 @@ public class MatrizMath {
 			}
 			return producto;
 		}
+		public MatrizMath multiplicar( Double num) {
+			MatrizMath producto = this.clone();
+			for (int i = 0; i < producto.filas; i++) {
+				for (int j = 0; j < producto.columnas; j++) {
+					producto.mat[i][j] *= num;
+				}
+			}
+			return producto;
+		}
 		
+		public MatrizMath clone() {
+		
+			MatrizMath clone =  new MatrizMath(this.filas, this.columnas);
+			clone.mat = this.mat;
+			return clone;
+		}
 		
 		
 }
