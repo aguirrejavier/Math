@@ -22,6 +22,11 @@ public class MatrizMath {
 			this.columnas=columnas;
 			this.dim=filas*columnas;
 			this.mat=new Double[filas][columnas];
+			
+		}
+		public static void main(String[] args) {
+			MatrizMath mat = new MatrizMath(2, 3);
+			System.out.println(mat.mat[0][0]);
 		}
 		
 		
@@ -119,7 +124,7 @@ public class MatrizMath {
 		}
 		
 		public MatrizMath multiplicar(MatrizMath mat) {
-			if(columnas!=mat.filas)
+			if(this.columnas!=mat.filas)
 				throw new DistDimException("Las dimensiones deben ser AxN y NxB");
 			
 			MatrizMath producto = new MatrizMath(this.filas,mat.columnas);

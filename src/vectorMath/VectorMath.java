@@ -33,8 +33,8 @@ public class VectorMath {
 	
 	public VectorMath sumar(VectorMath vec) throws DistDimException{
 		if(dim!=vec.dim)
-			throw new DistDimException("Los vectores tienen distinta dimensiÃ³n");
-		VectorMath suma = new VectorMath(dim);
+			throw new DistDimException("Los vectores tienen distinta dimensión");
+		VectorMath suma = new VectorMath(this.dim);
 		for(int i=0; i<dim; i++)
 			suma.coord[i]=coord[i]+vec.coord[i];
 		return suma;
@@ -66,6 +66,19 @@ public class VectorMath {
 			producto.coord[i]=coord[i]*escalar;	
 		}
 		return producto;
+	}
+	public Double normaInfinita() {
+		Double sumador=0.0;
+		for (Double num : this.coord) {
+			sumador += Math.pow(num, 2);
+		}
+		return Math.sqrt(sumador);
+	}
+	
+	public VectorMath clone() {
+		VectorMath clone = new VectorMath(this.dim);
+		clone.coord = this.coord;
+		return clone;
 	}
 	
 	

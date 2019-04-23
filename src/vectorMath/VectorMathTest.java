@@ -45,4 +45,13 @@ public class VectorMathTest {
 		vecs[1].setCoord(coords[1]);
 		assertEquals(vecs[1], vecs[0].productoEscalar(escalar));
 	}
+	
+	@Test
+	public void testClone() {
+		VectorMath vec = new VectorMath(4);
+		Double[] cord = {2.0,5.0,9.0,4.0};
+		vec.setCoord(cord);
+		VectorMath aux = vec.clone();
+		assertEquals(vec, aux);
+	}
 }
