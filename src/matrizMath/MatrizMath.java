@@ -164,6 +164,27 @@ public class MatrizMath {
 			clone.mat = this.mat;
 			return clone;
 		}
-		
+		public MatrizMath transpuesta() {
+			
+			MatrizMath trans = new MatrizMath(this.columnas, this.filas);
+			for (int i = 0; i < this.filas; i++) { 
+				for (int j = 0; j < this.columnas; j++) 
+					trans.mat[j][i] = this.mat[i][j];
+			}	
+			return trans;
+		}
+		public void transpuestaInSiTu() {
+			double numAux;
+			if(this.filas != this.columnas)
+				throw new DistDimException("No se puede transponer sobre si misma porque no es una matriz cuadrada");
+			
+			for (int i = 0; i < this.filas; i++) {
+				for (int j = i+1  ; j < this.columnas; j++) {
+					numAux = this.mat[i][j];
+					this.mat[i][j] = this.mat[j][i];
+					this.mat[j][i] = numAux;
+				}
+			}
+		}
 		
 }
